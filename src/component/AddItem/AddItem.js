@@ -57,8 +57,8 @@ const onSubmit = (e) => {
 
 			{/* Item Quantity Input */}
 			<div>
-				<label for="quantity">Quantity</label>
-				<input id="quantity" type="number" value="1" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
+				<label>Quantity</label>
+				<input id="quantity" type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
 
 			</div>
 
