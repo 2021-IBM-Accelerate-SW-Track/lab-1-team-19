@@ -3,6 +3,9 @@
 		item.date: JS Date object to store date/time of submission (date)
 		item.id: unique id for each item in list (number)
 		item.done: whether or not item is completed (boolean)
+		item.category: what category the item is in (string)
+			*Meat, Dairy, Frozen, Household, Produce, Pantry, Hygeine
+		item.quantity: how many of an item to get (number)
 */
 
 
