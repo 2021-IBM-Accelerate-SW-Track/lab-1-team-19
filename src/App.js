@@ -68,7 +68,7 @@ return (
     <Header />
     <Button variant="contained" onClick={() => setAddBox(!addBox)}>Add item</Button>
 
-    {addBox && <AddItem onAdd = {addItem} />}
+    <AddItem onAdd = {addItem} />
 
     {items.length>0 ? (
         <Items items={items} /> 
