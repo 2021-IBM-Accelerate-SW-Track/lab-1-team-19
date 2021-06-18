@@ -4,12 +4,9 @@ import AddItem from "./component/AddItem"
 import { useState } from 'react'
 import Button from '@material-ui/core/Button'
 
-import './App.css';
-
 
 function App() {
   const [addBox, setAddBox] = useState(true)
-
   let today = new Date();
   const [items, setItems] = useState([
 		{
@@ -66,9 +63,9 @@ function App() {
 return (
   <div className="container">
     <Header />
-    <Button variant="contained" onClick={() => setAddBox(!addBox)}>Add item</Button>
+    <Button variant="contained" color='primary' onClick={() => setAddBox(!addBox)}>Add item</Button>
 
-    {addBox && <AddItem onAdd = {addItem} />}
+    {!addBox && <AddItem onAdd = {addItem} />}
 
     {items.length>0 ? (
         <Items items={items} /> 

@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button"
 import Textfield from "@material-ui/core/TextField"
 import Select from "@material-ui/core/Select"
 import MenuItem  from "@material-ui/core/MenuItem"
+import InputLabel from "@material-ui/core/InputLabel";
 
 const AddItem = ({ onAdd }) => {
 	const [text, setText] = useState('');
@@ -38,16 +39,28 @@ const onSubmit = (e) => {
 		<form className = 'add-form' onSubmit = {onSubmit}>
 
 			{/* Item Name Input */}
-			<div>
-				<label>Item</label>
-				<Textfield type = 'text' data-testid='new-item-input' label = 'Add Item' value={text} onChange={(e) => setText(e.target.value)}/>
+			<div
+				style={
+					{padding:'10px'}
+				}
+			>
+				<Textfield
+					type = 'text'
+					data-testid='new-item-input'
+					variant = 'outlined'
+					label = 'Item Name'
+					value={text} onChange={(e) => setText(e.target.value)}
+				/>
 			</div>
 
 			{/* Item Category Input*/}
-			<div>
-				<label>Category</label>
-				<Select labelId="category" value={category} onChange={(e) => setCategory(e.target.value)}>
-					<MenuItem value="Select">Select</MenuItem>
+			<div
+				style={
+					{padding:'10px'}
+				}
+			>
+				<InputLabel id="category-select">Category</InputLabel>
+				<Select label="Category" labelId="category-select" variant="outlined" value={category} onChange={(e) => setCategory(e.target.value)}>
 					<MenuItem value="Meat">Meat</MenuItem>
 					<MenuItem value="Dairy">Dairy</MenuItem>
 					<MenuItem value="Frozen">Frozen</MenuItem>
@@ -60,13 +73,23 @@ const onSubmit = (e) => {
 
 
 			{/* Item Quantity Input */}
-			<div>
-				<label>Quantity</label>
-				<input id="quantity" type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
+			<div
+				style={
+					{padding:'10px'}
+				}
+			>
+				<Textfield
+					type="number"
+					variant='outlined'
+					label ='Quantity'
+					value={quantity}
+					onChange={(e) => setQuantity(e.target.value)}
+				/>
 
 			</div>
-
-			<Button variant="contained" type='submit' data-testid="new-item-button" > Add </Button>
+				
+			{ /*Item Submission*/ }
+			<Button variant="contained" type='submit' data-testid="new-item-button" > Add To List </Button>
 		</form>
 	)
 }
