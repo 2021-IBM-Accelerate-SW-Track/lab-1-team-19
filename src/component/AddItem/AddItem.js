@@ -1,4 +1,8 @@
 import { useState } from 'react' 
+import Button from "@material-ui/core/Button"
+import Textfield from "@material-ui/core/TextField"
+import Select from "@material-ui/core/Select"
+import MenuItem  from "@material-ui/core/MenuItem"
 
 const AddItem = ({ onAdd }) => {
 	const [text, setText] = useState('');
@@ -36,22 +40,22 @@ const onSubmit = (e) => {
 			{/* Item Name Input */}
 			<div>
 				<label>Item</label>
-				<input type = 'text' data-testid="new-item-input" placeholder = 'Add Item' value={text} onChange={(e) => setText(e.target.value)}/>
+				<Textfield type = 'text' data-testid='new-item-input' label = 'Add Item' value={text} onChange={(e) => setText(e.target.value)}/>
 			</div>
 
 			{/* Item Category Input*/}
 			<div>
 				<label>Category</label>
-				<select id="category" name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
-					<option value="Select">Select</option>
-					<option value="Meat">Meat</option>
-					<option value="Dairy">Dairy</option>
-					<option value="Frozen">Frozen</option>
-					<option value="Household">Household</option>
-					<option value="Produce">Produce</option>
-					<option value="Pantry">Pantry</option>
-					<option value="Hygiene">Hygiene</option>
-				</select>
+				<Select labelId="category" value={category} onChange={(e) => setCategory(e.target.value)}>
+					<MenuItem value="Select">Select</MenuItem>
+					<MenuItem value="Meat">Meat</MenuItem>
+					<MenuItem value="Dairy">Dairy</MenuItem>
+					<MenuItem value="Frozen">Frozen</MenuItem>
+					<MenuItem value="Household">Household</MenuItem>
+					<MenuItem value="Produce">Produce</MenuItem>
+					<MenuItem value="Pantry">Pantry</MenuItem>
+					<MenuItem value="Hygiene">Hygiene</MenuItem>
+				</Select>
 			</div>
 
 
@@ -62,7 +66,7 @@ const onSubmit = (e) => {
 
 			</div>
 
-			<input type='submit' value='Add' data-testid="new-item-button" />
+			<Button variant="contained" type='submit' data-testid="new-item-button" > Add </Button>
 		</form>
 	)
 }
