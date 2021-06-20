@@ -20,11 +20,18 @@ function App() {
     }
 			
 	])
+  // Function to Delete Items
+  const deleteItems = (itemName) => {
+    setItems(items.filter((item)=>item.itemName !== itemName))
+
+  }
+
+
   return (
     <div className="container">
       <Header />
       {items.length>0 ? (
-        <Items items={items}/>
+        <Items items={items} onDelete={deleteItems}/>
         
       ) : (
       'No Items :)'

@@ -1,3 +1,6 @@
+import { FaTimes } from 'react-icons/fa'
+
+
 /* Item Information:
 		item.itemName: text to go with item (string)
 		item.date: JS Date object to store date/time of submission (date)
@@ -10,16 +13,16 @@
 
 
 /*Can pass in item functions (finished/delete) up here*/
-const Item = ({ item }) => {
+const Item = ({ item,onDelete }) => {
 	return (
 		/*If we want to do anything fancy with changing the item
 			color when the item is done, we can do it via this div.*/
 
 			/*Delete button goes somewhere in <h3> area maybe? With icon things?*/
 			/*Item done somewhere here too?*/
-		<div >
+		<div className='item' >
 			<h3>
-				{item.itemName} 
+				{item.itemName} <FaTimes style={{color:'red',cursor:'pointer'}} onClick={() =>onDelete(item.itemName)}/> 
 			</h3>
 			
 			{/* Using date object to get information about time/date item added. */}			
