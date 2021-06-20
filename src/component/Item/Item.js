@@ -21,16 +21,23 @@ const Item = ({ item }) => {
 			/*Item done somewhere here too?*/
 		<div >
 			<h3>
-				{item.itemName}
-				{"  "}
-				<EditSharpIcon  />
-							</h3>
+				{item.itemName} {"  "} <EditSharpIcon  />
+			</h3>
+
+			<p>
+				Amount: {item.quantity}
+			</p>
+
+			<p>
+				Category: {item.category}
+			</p>
 
 			{/* Using date object to get information about time/date item added. */}
 			<p>
 				{item.date.getMonth()}/{item.date.getDate()}/{item.date.getFullYear()}
 				{" "} {item.date.getHours()}:{item.date.getMinutes()}
 			</p>
+
 		</div>
 	)
 }
