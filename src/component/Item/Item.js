@@ -22,11 +22,20 @@ const Item = ({ item }) => {
 				{item.itemName} 
 			</h3>
 			
+			<p>
+				Amount: {item.quantity}
+			</p> 
+
+			<p>
+				Category: {item.category}
+			</p>
+
 			{/* Using date object to get information about time/date item added. */}			
 			<p>
 				{item.date.getMonth()}/{item.date.getDate()}/{item.date.getFullYear()}:
 				{item.date.getHours()}:{item.date.getMinutes()}
 			</p>
+
 		</div>
 	)
 }
