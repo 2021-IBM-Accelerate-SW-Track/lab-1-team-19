@@ -8,9 +8,11 @@
 		item.quantity: how many of an item to get (number)
 */
 
+import EditSharpIcon from '@material-ui/icons/EditSharp';
+/*Can pass in item functions (finished/delete) up here */
 
-/*Can pass in item functions (finished/delete) up here*/
 const Item = ({ item }) => {
+
 	return (
 		/*If we want to do anything fancy with changing the item
 			color when the item is done, we can do it via this div.*/
@@ -19,13 +21,15 @@ const Item = ({ item }) => {
 			/*Item done somewhere here too?*/
 		<div >
 			<h3>
-				{item.itemName} 
-			</h3>
-			
-			{/* Using date object to get information about time/date item added. */}			
+				{item.itemName}
+				{"  "}
+				<EditSharpIcon  />
+							</h3>
+
+			{/* Using date object to get information about time/date item added. */}
 			<p>
-				{item.date.getMonth()}/{item.date.getDate()}/{item.date.getFullYear()}:
-				{item.date.getHours()}:{item.date.getMinutes()}
+				{item.date.getMonth()}/{item.date.getDate()}/{item.date.getFullYear()}
+				{" "} {item.date.getHours()}:{item.date.getMinutes()}
 			</p>
 		</div>
 	)

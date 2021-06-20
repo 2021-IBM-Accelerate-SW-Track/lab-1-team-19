@@ -1,6 +1,6 @@
-import Header from "./component/header"
-import Items from "./component/Items"
-import { useState } from 'react'
+import Header from "./component/header";
+import Items from "./component/Items";
+import { useState } from 'react';
 
 import './App.css';
 
@@ -18,14 +18,17 @@ function App() {
 			date: today,
       done: false,
     }
-			
+
 	])
+
   return (
+
     <div className="container">
+
       <Header />
       {items.length>0 ? (
         <Items items={items}/>
-        
+
       ) : (
       'No Items :)'
       )}
