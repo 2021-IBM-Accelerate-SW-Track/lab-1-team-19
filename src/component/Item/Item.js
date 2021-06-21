@@ -1,5 +1,6 @@
 import Checkbox from '@material-ui/core/Checkbox'
 import { FaTimes } from 'react-icons/fa'
+import './item.css'
 /* Item Information:
     item.itemName: text to go with item (string)
     item.date: JS Date object to store date/time of submission (date)
@@ -57,11 +58,12 @@ const Item = (prop) => {
       /*Item done somewhere here too?*/
     <div >
 
-      {/*Marking Complete Code -- need to put in same line*/}
-		<label>
+
+    <div className="inline-field">
       <Checkbox id="checkbox" color="primary" onClick={() => completeItem(prop.item, prop.allItems, prop.markingComplete)}/>    
-        {itemNameDisplay} <FaTimes style={{color:'red',cursor:'pointer'}} onClick={() =>prop.onDelete(prop.item.itemName)} />
-		</label>	
+        {itemNameDisplay} 
+      <FaTimes style={{color:'red',cursor:'pointer', paddingTop:'22px', paddingLeft: '10px'}} onClick={() =>prop.onDelete(prop.item.itemName)} />
+		</div>
       <p>
 
         Amount: {prop.item.quantity}
