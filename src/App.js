@@ -1,3 +1,4 @@
+import React from "react"
 import Header from "./component/header"
 import Items from "./component/Items"
 import AddItem from "./component/AddItem"
