@@ -1,4 +1,5 @@
 import Item from '../Item'
+// the onDelete
 const Items = ({ items, onDelete }) => {
 	return (
 		<>
