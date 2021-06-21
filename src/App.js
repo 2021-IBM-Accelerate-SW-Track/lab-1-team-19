@@ -9,7 +9,6 @@ import { ThemeProvider, createMuiTheme} from "@material-ui/core/styles"
 import { FormLabel } from "@material-ui/core"
 import  FormControlLabel  from "@material-ui/core/FormControlLabel"
 
-
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const theme= createMuiTheme({
@@ -17,6 +16,7 @@ function App() {
       type: darkMode ? "dark" : "light",
     },
   });
+
   const [addBox, setAddBox] = useState(true)
   let today = new Date();
   const [items, setItems] = useState([
@@ -37,7 +37,11 @@ function App() {
     }
 	])
 
+  // Function to delete items with icon
+  const deleteItems = (itemName) => {
+    setItems(items.filter((item)=>item.itemName !== itemName))
 
+  }
 
 
   const addItem = (item) => {
@@ -82,22 +86,25 @@ return (
   
     <Paper style={{ height: "180vh"}}>
     <Grid container direction="column">
+
     <div className="container">
-    <Header />
-    <Button variant="contained" color='primary' onClick={() => setAddBox(!addBox)}>Add item</Button>
+      <Header />
+      <Button variant="contained" color='primary' onClick={() => setAddBox(!addBox)}>Add item</Button>
 
-    {addBox && <AddItem onAdd = {addItem} />}
+      {addBox && <AddItem onAdd = {addItem} />}
 
-    {items.length>0 ? (
-        <Items items={items} /> 
-    ) : (
-    'No Items :)'
-    )}
-    </div>
-        </Grid>
-      </Paper>
-  </ThemeProvider>
-    
+      {items.length>0 ? (
+          <>
+          <Items markComplete={setItems} onDelete={deleteItems} items={items}  /> 
+          
+          </>
+      ) : (
+      'No Items :)'
+      )}
+      </div>
+      </Grid>
+        </Paper>
+    </ThemeProvider>
 )
 }
 export default App;

@@ -1,9 +1,11 @@
 import Item from '../Item'
-const Items = ({ items }) => {
+
+
+const Items = (prop) => {
 	return (
 		<>
-			{items.map((item) => (
-				<Item key = {item.id} item = {item}/>
+			{prop.items.map((item) => (
+				<Item key = {item.id} item = {item} allItems = {prop.items} markingComplete = {prop.markComplete} onDelete={prop.onDelete}/>
 			))}
 
 		</>
