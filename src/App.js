@@ -4,7 +4,6 @@ import AddItem from "./component/AddItem"
 import { useState } from 'react'
 import Button from '@material-ui/core/Button'
 
-
 function App() {
   const [addBox, setAddBox] = useState(true)
   let today = new Date();
@@ -68,7 +67,10 @@ return (
     {addBox && <AddItem onAdd = {addItem} />}
 
     {items.length>0 ? (
-        <Items items={items} /> 
+        <>
+        <Items markComplete={setItems} items={items}  /> 
+        
+        </>
     ) : (
     'No Items :)'
     )}
