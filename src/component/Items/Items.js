@@ -1,5 +1,5 @@
 import Item from '../Item'
-// the onDelete
+// the onDelete feature
 const Items = ({ items, onDelete }) => {
 	return (
 		<>

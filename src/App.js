@@ -21,7 +21,7 @@ function App() {
     }
 			
 	])
-  // Function to Delete Items
+  // Function to delete items with icon
   const deleteItems = (itemName) => {
     setItems(items.filter((item)=>item.itemName !== itemName))
 

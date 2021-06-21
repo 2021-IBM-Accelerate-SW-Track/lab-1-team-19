@@ -21,6 +21,7 @@ const Item = ({ item,onDelete }) => {
 			/*Delete button goes somewhere in <h3> area maybe? With icon things?*/
 			/*Item done somewhere here too?*/
 			// added delete icon on line 26
+			
 		<div className='item' >
 			<h3>
 				{item.itemName} <FaTimes style={{color:'red',cursor:'pointer'}} onClick={() =>onDelete(item.itemName)}/> 

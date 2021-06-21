@@ -19,7 +19,7 @@ afterEach(() => {
 test('test that App component renders', () => {
   render(<App />, container);
  });
-
+// added outer as stated in slack
 test('test that new-item-button is a button', () => {
   render(<App/>, container);
   const element = screen.getByTestId('new-item-button');
@@ -32,4 +32,3 @@ test('test that new-item-input is an input ', () => {
   expect(element.outerHTML.toLowerCase().includes("input")).toBe(true)
 });
 
-// TODO save outter changes and commit/push them delete when you do this
