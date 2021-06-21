@@ -32,7 +32,7 @@ const Item = ({ item }) => {
 
 			{/* Using date object to get information about time/date item added. */}			
 			<p>
-				{item.date.getMonth()}/{item.date.getDate()}/{item.date.getFullYear()}:
+				{item.date.getMonth()+1}/{item.date.getDate()}/{item.date.getFullYear()}:
 				{item.date.getHours()}:{item.date.getMinutes()}
 			</p>
 
