@@ -25,7 +25,11 @@ function App() {
     }
 	])
 
+  // Function to delete items with icon
+  const deleteItems = (itemName) => {
+    setItems(items.filter((item)=>item.itemName !== itemName))
 
+  }
 
 
   const addItem = (item) => {
@@ -68,7 +72,7 @@ return (
 
     {items.length>0 ? (
         <>
-        <Items markComplete={setItems} items={items}  /> 
+        <Items markComplete={setItems} onDelete={deleteItems} items={items}  /> 
         
         </>
     ) : (

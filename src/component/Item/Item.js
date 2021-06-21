@@ -1,5 +1,5 @@
 import Checkbox from '@material-ui/core/Checkbox'
-import { prependOnceListener } from 'process';
+import { FaTimes } from 'react-icons/fa'
 /* Item Information:
     item.itemName: text to go with item (string)
     item.date: JS Date object to store date/time of submission (date)
@@ -60,7 +60,7 @@ const Item = (prop) => {
       {/*Marking Complete Code -- need to put in same line*/}
 		<label>
       <Checkbox id="checkbox" color="primary" onClick={() => completeItem(prop.item, prop.allItems, prop.markingComplete)}/>    
-        {itemNameDisplay}
+        {itemNameDisplay} <FaTimes style={{color:'red',cursor:'pointer'}} onClick={() =>prop.onDelete(prop.item.itemName)} />
 		</label>	
       <p>
 
