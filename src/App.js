@@ -1,11 +1,22 @@
+import React from "react"
 import Header from "./component/header"
 import Items from "./component/Items"
 import AddItem from "./component/AddItem"
 import { useState } from 'react'
 import Button from '@material-ui/core/Button'
+import {Grid, Switch, Paper} from "@material-ui/core"
+import { ThemeProvider, createMuiTheme} from "@material-ui/core/styles"
+import { FormLabel } from "@material-ui/core"
+import  FormControlLabel  from "@material-ui/core/FormControlLabel"
 
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const theme= createMuiTheme({
+    palette: {
+      type: darkMode ? "dark" : "light",
+    },
+  });
   const [addBox, setAddBox] = useState(true)
   let today = new Date();
   const [items, setItems] = useState([
@@ -34,7 +45,7 @@ function App() {
 
     //Dummy date here so that it doesn't crash- needs to be updated with
     //current date.
-    let dummyDate = new Date('December 25, 2001 03:25:00')
+    let dummyDate = new Date()
 
     var length = items.length;
 
@@ -61,7 +72,17 @@ function App() {
 
 
 return (
-  <div className="container">
+  <ThemeProvider theme={theme}>
+    <FormControlLabel
+    control={<Switch 
+    checked= {darkMode} 
+    onChange={() => setDarkMode(!darkMode)}
+    name="checkedA"/>}
+    label="Dark Mode"/>
+  
+    <Paper style={{ height: "180vh"}}>
+    <Grid container direction="column">
+    <div className="container">
     <Header />
     <Button variant="contained" color='primary' onClick={() => setAddBox(!addBox)}>Add item</Button>
 
@@ -72,9 +93,11 @@ return (
     ) : (
     'No Items :)'
     )}
-
-
     </div>
+        </Grid>
+      </Paper>
+  </ThemeProvider>
+    
 )
 }
 export default App;

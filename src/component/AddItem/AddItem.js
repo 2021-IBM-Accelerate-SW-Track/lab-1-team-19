@@ -89,7 +89,7 @@ const onSubmit = (e) => {
 			</div>
 				
 			{ /*Item Submission*/ }
-			<Button variant="contained" type='submit' data-testid="new-item-button" > Add To List </Button>
+			<Button variant="contained" type='submit' data-testid="new-item-button" color= "primary" > Add To List </Button>
 		</form>
 	)
 }
