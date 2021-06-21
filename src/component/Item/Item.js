@@ -75,7 +75,7 @@ const Item = (prop) => {
       date
         
       <p>
-        {prop.item.date.getMonth()}/{prop.item.date.getDate()}/{prop.item.date.getFullYear()}:
+        {prop.item.date.getMonth()+1}/{prop.item.date.getDate()}/{prop.item.date.getFullYear()}:
         {prop.item.date.getHours()}:{prop.item.date.getMinutes()}
       </p>
 
