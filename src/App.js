@@ -16,7 +16,7 @@ function App() {
       type: darkMode ? "dark" : "light",
     },
   });
-
+  
   const [addBox, setAddBox] = useState(true)
   let today = new Date();
   const [items, setItems] = useState([
@@ -70,7 +70,7 @@ function App() {
       quantity: item.quantity,
       done: false,
     }
-    
+
     setItems([...items, newItem])
 }
 
@@ -78,12 +78,12 @@ function App() {
 return (
   <ThemeProvider theme={theme}>
     <FormControlLabel
-    control={<Switch 
-    checked= {darkMode} 
+    control={<Switch
+    checked= {darkMode}
     onChange={() => setDarkMode(!darkMode)}
     name="checkedA"/>}
     label="Dark Mode"/>
-  
+
     <Paper style={{ height: "180vh"}}>
     <Grid container direction="column">
 
@@ -95,8 +95,8 @@ return (
 
       {items.length>0 ? (
           <>
-          <Items markComplete={setItems} onDelete={deleteItems} items={items}  /> 
-          
+          <Items markComplete={setItems} onDelete={deleteItems} items={items}  />
+
           </>
       ) : (
       'No Items :)'
