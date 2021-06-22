@@ -1,0 +1,6 @@
+.inline-field {
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+  }
+

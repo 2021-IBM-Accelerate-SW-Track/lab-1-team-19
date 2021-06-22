@@ -1,11 +1,12 @@
+
 /* Item Information:
-		item.itemName: text to go with item (string)
-		item.date: JS Date object to store date/time of submission (date)
-		item.id: unique id for each item in list (number)
-		item.done: whether or not item is completed (boolean)
-		item.category: what category the item is in (string)
-			*Meat, Dairy, Frozen, Household, Produce, Pantry, Hygeine
-		item.quantity: how many of an item to get (number)
+    item.itemName: text to go with item (string)
+    item.date: JS Date object to store date/time of submission (date)
+    item.id: unique id for each item in list (number)
+    item.done: whether or not item is completed (boolean)
+    item.category: what category the item is in (string)
+      *Meat, Dairy, Frozen, Household, Produce, Pantry, Hygeine
+    item.quantity: how many of an item to get (number)
 */
 /*
 import Items from '../Items';
@@ -56,15 +57,78 @@ const Item = ({ item, updateItem }) => {
 				{" "} {item.date.getHours()}:{item.date.getMinutes()}
 			</p>
 
+function completeItem(item, allItems, markComplete){
+	//Basically edit the item list so that it's marked done or not
+	//To edit, we create a new modified list
+
+	let updatedItemList = [];
+	for(let [category, itemsAll] of Object.entries(allItems)){
+		if(itemsAll.itemName === item.itemName){
+			if(itemsAll.done){
+				itemsAll.done = false;
+			}else{
+			  itemsAll.done = true;
+			}
+		}
+		updatedItemList.push(itemsAll); //becomes the new item list and renders this instead
+	}
+	markComplete(updatedItemList); //referring back to the setItems useState in the main App.js file
+}
+
+const itemNameStyle = {
+	display: "inline",
+	color: "blue",
+	whiteSpace: "nowrap"
+};
+
+// >>>>>>>>>>>>>>>>>>>>
+const Item = (prop) => {
+  let isTrue = false;
+  let itemNameDisplay = '';
+
+  if(prop.item.done){
+    //marking complete so put a strike through everything
+    itemNameDisplay = <h3><s>{prop.item.itemName}</s></h3>;
+  }else{
+	//not complete, so don't put a strike
+    itemNameDisplay = <h3>{prop.item.itemName}</h3>;
+  }
+
+  return (
+    <div >
+
+
+    <div className="inline-field">
+      <Checkbox id="checkbox" color="primary" onClick={() => completeItem(prop.item, prop.allItems, prop.markingComplete)}/>
+        {itemNameDisplay}
+      <FaTimes style={{color:'red',cursor:'pointer', paddingTop:'22px', paddingLeft: '10px'}} onClick={() =>prop.onDelete(prop.item.itemName)} />
 		</div>
-	)
+      <p>
+
+        Amount: {prop.item.quantity}
+      </p>
+
+      <p>
+        Category: {prop.item.category}
+      </p>
+
+      date
+
+      <p>
+        {prop.item.date.getMonth()+1}/{prop.item.date.getDate()}/{prop.item.date.getFullYear()}:
+        {prop.item.date.getHours()}:{prop.item.date.getMinutes()}
+      </p>
+
+    </div>
+  )
 }
 
 export default Item
 */
 //-----------------------------------------------------------------------------------------------------------------
+import { FaTimes } from 'react-icons/fa'
+import './item.css'
 
-/*
 import Checkbox from '@material-ui/core/Checkbox'
 import { prependOnceListener } from 'process';
 import EditSharpIcon from '@material-ui/icons/EditSharp';
@@ -90,12 +154,12 @@ function completeItem(item, allItems, markComplete){
 
 function EditItem(item, allItems, updateItem ){ //itemId, itemName, itemQuant,
 
-	/*	const [edit, setEdit] = useState({
+		const [edit, setEdit] = useState({
 		    id: null,
 		    name: '',
 				quantity: 0
 		  });
-			*/ /*
+
 			const submitUpdate = ({itemName, itemQuant}) => {
 			    updateItem(edit.id, itemName, itemQuant);
 			    setEdit({
@@ -111,9 +175,9 @@ function EditItem(item, allItems, updateItem ){ //itemId, itemName, itemQuant,
 					let updatedItemList = [];
 					for(let [category, itemsAll] of Object.entries(allItems)){
 						if(itemsAll.itemName === item.itemName){
- 						itemsAll.itemName=nitem;
+ 						//itemsAll.itemName=nitem;
 
-						//	setEdit({id:item.id, name: item.itemName, quantity:item.quantity})
+							setEdit({id:item.id, name: item.itemName, quantity:item.quantity})
 						}
 							updatedItemList.push(itemsAll);
 					}
@@ -142,6 +206,8 @@ const Item = (prop) => {
       <Checkbox id="checkbox" color="primary" onClick={() => completeItem(prop.item, prop.allItems, prop.markingComplete)}/>
         {itemNameDisplay}
 				<EditSharpIcon onClick={() => EditItem(prop.item, prop.allItems,  prop.updating )}/> //prop.item.quantity, prop.item.itemName, prop.item.quantity,
+				<FaTimes style={{color:'red',cursor:'pointer', paddingTop:'22px', paddingLeft: '10px'}} onClick={() =>prop.onDelete(prop.item.itemName)} />
+
 		</label>
       <p>
 
@@ -163,11 +229,13 @@ const Item = (prop) => {
 }
 
 export default Item
-*/
-//---------------------------------------------------------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------------------------------------------------------
+/*
 import Checkbox from '@material-ui/core/Checkbox'
 import { prependOnceListener } from 'process';
+import { FaTimes } from 'react-icons/fa'
+import './item.css'
 
 import EditSharpIcon from '@material-ui/icons/EditSharp';
 import React, { useState } from 'react';
@@ -197,7 +265,7 @@ function EditItem(item, allItems, updateItem ){ //itemId, itemName, itemQuant,
 		    name: '',
 				quantity: 0
 		  });
-			*/
+			*/  /*
 			const submitUpdate = ({itemName, itemQuant}) => {
 			    updateItem(edit.id, itemName, itemQuant);
 			    setEdit({
@@ -275,8 +343,6 @@ class Edit extends React.Component {
 		}
 
 
-
-/*Can pass in item functions (finished/delete) up here*/
 const Item = (prop) => {
   let isTrue = false;
   let itemNameDisplay = '';
@@ -296,6 +362,8 @@ const Item = (prop) => {
         {itemNameDisplay}
 			<a href="javascript:;" onClick={(e) => this.modalOpen(e)}>	<EditSharpIcon />// onClick={() => EditItem(prop.item, prop.allItems,  prop.updating )}/> //prop.item.quantity, prop.item.itemName, prop.item.quantity,
 			</a>
+			<FaTimes style={{color:'red',cursor:'pointer', paddingTop:'22px', paddingLeft: '10px'}} onClick={() =>prop.onDelete(prop.item.itemName)} />
+		</div>
 		</label>
 		<Modal show={this.state.modal} handleClose={(e) => this.modalClose(e)}>
 				 <h2>Hello Modal</h2>
@@ -342,3 +410,4 @@ const Item = (prop) => {
 const rootElement = document.getElementById("root");
 ReactDOM.render(<Edit />, rootElement);
 export default Item
+*/
